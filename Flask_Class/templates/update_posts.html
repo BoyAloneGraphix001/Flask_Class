@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="update-post">
+
+    <h2>Update Post</h2>
+
+    <form method="POST">
+
+        {{ form.hidden_tag() }}
+
+        <fieldset>
+
+            <div>
+                {{ form.title.label }}
+                {{ form.title(class="form-control") }}
+
+                {% for error in form.title.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            <div>
+                {{ form.description.label }}
+                {{ form.description(class="form-control") }}
+
+                {% for error in form.description.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+
+            <div>
+                {{ form.content.label }}
+                {{ form.content(rows=10, class="form-control") }}
+
+                {% for error in form.content.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+
+        </fieldset>
+
+        <div>
+            {{ form.submit(value="Update Post") }}
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

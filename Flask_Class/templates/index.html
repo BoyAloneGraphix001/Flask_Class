@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="home-page">
+  <h2>Latest Posts!</h2>
+ {% for post in posts %}
+    <article class="media content-section">
+    <div class="article-metadata">
+      <div class="">
+        <a href="#" class="mr-2">{{ post.author.username}}</a>
+        <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d')}}</small>
+      </div>
+      <h2><a href="{{ url_for('posts.update_post', update_id=post.id) }}" class="article-title">{{ post.title}}</a></h2>
+      <p class="article-content">{{ post.content }}</p>
+    </div>
+  </article>
+
+  {% else %}
+    <p>No posts have been created yet.</p>
+
+  {% endfor %}
+
+  
+</div>
+
+{% endblock %}
